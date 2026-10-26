@@ -5,7 +5,7 @@ A live Vietnamese ordering game built with React, TypeScript, Vite, Supabase Aut
 ## Run
 
 1. Use Node.js 22 or newer. Run `npm ci`.
-2. Copy `.env.example` to `.env` and fill in the Supabase URL and **public publishable key**. Never place a service-role key in the frontend.
+2. The included `.env` points to the created Order Rush Supabase project and contains **only a public publishable key**. For another project, copy `.env.example` to `.env` and fill in its URL and publishable key.
 3. In [Supabase Auth settings](https://supabase.com/dashboard/project/ykpmqjaoeioirkgobwyc/auth/providers), enable **Anonymous Sign-Ins**. The Supabase connector cannot change this project setting. Until enabled, the play button receives `anonymous_provider_disabled`.
 4. Run `npm run dev`. For a production build, run `npm run build`.
 
@@ -28,4 +28,3 @@ Import this folder as a Vite project. Set `VITE_SUPABASE_URL` and `VITE_SUPABASE
 ## Verification
 
 `npm run build` passed. `npm audit` reports zero vulnerabilities. `supabase/tests/game_flow.sql` is a transaction-safe integration test; it passed on the live project with two independent players, correct and incorrect grades, and duplicate rejection. The test transaction rolled back. End-to-end browser and presence testing still require enabling anonymous sign-ins.
-
