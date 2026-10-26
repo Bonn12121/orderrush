@@ -23,7 +23,17 @@ Only users in `admin_users` can create, edit, publish, activate, reset, replay t
 
 ## Deploy on Vercel
 
-Import this folder as a Vite project. Set `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` from `.env` as Vercel environment variables. Build command: `npm run build`; output directory: `dist`. Add a rewrite from `/(.*)` to `/index.html` if using direct `/admin` links.
+1. Push this repository to GitHub and import `Bonn12121/orderrush` at [vercel.com/new](https://vercel.com/new).
+2. Keep the framework as **Vite**. The included `vercel.json` already sets `npm run build`, `dist`, and the SPA rewrite for `/admin`.
+3. In Vercel project **Settings → Environment Variables**, add these two variables for **Production**, **Preview**, and **Development**:
+
+   - `VITE_SUPABASE_URL` = the Supabase project URL, for example `https://your-project-ref.supabase.co`
+   - `VITE_SUPABASE_PUBLISHABLE_KEY` = the Supabase **publishable** key from **Project Settings → API**
+
+   Use the publishable key only. Never put a `service_role` or secret key in Vercel frontend variables.
+4. Redeploy. The app will be available at the Vercel URL; `/admin` will also work directly because of the rewrite.
+
+For local development, copy `.env.example` to `.env.local`, fill in the same two values, and run `npm ci` followed by `npm run dev`.
 
 ## Verification
 
